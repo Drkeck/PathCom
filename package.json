@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Drkeck/PathCom/issues"
   },
-  "homepage": "https://github.com/Drkeck/PathCom#readme"
+  "homepage": "https://github.com/Drkeck/PathCom#readme",
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  }
 }
