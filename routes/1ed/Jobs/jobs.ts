@@ -13,9 +13,13 @@ router.get("/", (req, res) => {
         const col = db.collection(credentials.collection);
         const get = col.find();
         console.log(get);
+        res.send(get)
     } catch(err) {
         console.log(err);
+        res.status(400).json({ message: "Unknown failure."})
     } finally {
         client.close();
     }
 })
+
+export default router;
