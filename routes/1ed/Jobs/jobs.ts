@@ -1,12 +1,13 @@
 import client from "../../../Connection";
 import express from "express";
-import { credentials } from "../../../Connection/credentials";
+import credentials from "../../../Connection/credentials";
 // ^ dependencies ^ //
 
 const router = express.Router();
 // ^ define router ^ //
 
 router.get("/", async (req, res) => {
+    // ^ get all jobs ^ //
     try {
         await client.connect();
         const db = client.db(credentials.cluster)
@@ -23,6 +24,7 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/", (req, res) => {
+    // ^ post a job ^ //
     try {
         client.connect();
         const db = client.db(credentials.cluster);
