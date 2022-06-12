@@ -6,12 +6,12 @@ import { credentials } from "../../../Connection/credentials";
 const router = express.Router();
 // ^ define router ^ //
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     try {
-        client.connect();
+        await client.connect();
         const db = client.db(credentials.cluster)
         const col = db.collection(credentials.collection);
-        const get = col.find();
+        const get = await col.find();
         console.log(get);
         res.send(get)
     } catch(err) {
@@ -19,6 +19,19 @@ router.get("/", (req, res) => {
         res.status(400).json({ message: "Unknown failure."})
     } finally {
         client.close();
+    }
+})
+
+router.post("/", (req, res) => {
+    try {
+        client.connect();
+        const db = client.db(credentials.cluster);
+        const col = db.collection(credentials.collection);
+        // will be building a way of posting to this operation.
+    } catch(error) {
+        console.log(error);
+    } finally {
+        client.close()
     }
 })
 
